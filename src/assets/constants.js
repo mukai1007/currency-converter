@@ -1,0 +1,38 @@
+export const defaultCurrencies = [
+    {'code' :'USD', 'title': 'Доллар США'},
+    {'code' :'KGS', 'title': 'Киргизский сом'},
+    {'code' :'EUR', 'title': 'ЕВРО'},
+    {'code' :'GBP', 'title': 'Фунт стерлингов'}
+  ];
+
+export const allCurrencies = [
+    {'code' :'AMD', 'title': 'Армянский драм'},
+    {'code' :'BYN', 'title': 'Белорусский рубль'},
+    {'code' :'BGN', 'title': 'Болгарский лев'},
+    {'code' :'BRL', 'title': 'Бразильский реал'},
+    {'code' :'HUF', 'title': 'Венгерский форинт'},
+    {'code' :'DKK', 'title': 'Датская крона'},
+    {'code' :'USD', 'title': 'Доллар США'},
+    {'code' :'EUR', 'title': 'ЕВРО'},
+    {'code' :'INR', 'title': 'Индийская рупия'},
+    {'code' :'KZT', 'title': 'Казахстанский тенге'},
+    {'code' :'CAD', 'title': 'Канадский доллар'},
+    {'code' :'KGS', 'title': 'Киргизский сом'},
+    {'code' :'CNY', 'title': 'Китайский юань'},
+    {'code' :'MDL', 'title': 'Молдавский лей'},
+    {'code' :'NOK', 'title': 'Норвежская крона'},
+    {'code' :'PLN', 'title': 'Польский злотый'},
+    {'code' :'RON', 'title': 'Новый румынский лей'},
+    {'code' :'SGD', 'title': 'Сингапурский доллар'},
+    {'code' :'TJS', 'title': 'Таджикский сомони'},
+    {'code' :'TRY', 'title': 'Турецкая лира'},
+    {'code' :'TMT', 'title': 'Новый туркменский манат'},
+    {'code' :'UZS', 'title': 'Узбекский сум'},
+    {'code' :'UAH', 'title': 'Украинская гривна'},
+    {'code' :'CZK', 'title': 'Чешская крона'},
+    {'code' :'SEK', 'title': 'Шведская крона'},
+    {'code' :'CHF', 'title': 'Швейцарский франк'},
+    {'code' :'ZAR', 'title': 'Южноафриканский рэнд'},
+    {'code' :'KRW', 'title': 'Вон Республики Корея'},
+    {'code' :'JPY', 'title': 'Японская иена'}, 
+  ]
