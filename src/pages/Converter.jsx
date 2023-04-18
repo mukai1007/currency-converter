@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { Block } from '../components/Block'
 import { BsArrowLeftRight } from 'react-icons/bs';
 
@@ -11,7 +11,33 @@ const Converter = () => {
   const [fromAmount, setFromAmount] = useState(1)
   const [toAmount, setToAmount] = useState(0) 
 
+  
+  const onChangeFromAmount = useCallback((value) => {
+    const price = value / ratesRef.current[fromCurrency]
+    const result = price * ratesRef.current[toCurrency]
+    setFromAmount(value)
+    setToAmount(result)
+  },[fromCurrency,toCurrency])
+
+  const onChangeToAmount = useCallback(() => {
+    const result = fromAmount * ratesRef.current[toCurrency] / ratesRef.current[fromCurrency]
+    setToAmount(result.toFixed(4))
+  },[fromAmount,toCurrency,fromCurrency])
+
   useEffect(() => {
+    onChangeFromAmount(fromAmount)
+  }, [fromCurrency, fromAmount,onChangeFromAmount])
+
+  useEffect(() => {
+    onChangeToAmount(toAmount)
+  }, [toCurrency, toAmount ,onChangeToAmount])
+
+  const handleSwitch = () => {
+    setFromCurrency(toCurrency);
+    setToCurrency(fromCurrency);
+  }
+  
+useEffect(() => {
     fetch('https://www.cbr-xml-daily.ru/latest.js')
         .then(response => response.json())
         .then(json => {
@@ -21,32 +47,7 @@ const Converter = () => {
           console.error(error)
           alert('Не удалось получить информацию')
         });
-  }, []);
-
-  const onChangeFromAmount = (value) => {
-    const price = value / ratesRef.current[fromCurrency]
-    const result = price * ratesRef.current[toCurrency]
-    setFromAmount(value)
-    setToAmount(result)
-  }
-
-  const onChangeToAmount = () => {
-    const result = fromAmount * ratesRef.current[toCurrency] / ratesRef.current[fromCurrency]
-    setToAmount(result.toFixed(4))
-  }
-
-  useEffect(() => {
-    onChangeFromAmount(fromAmount)
-  }, [fromCurrency, fromAmount])
-
-  useEffect(() => {
-    onChangeToAmount(toAmount)
-  }, [toCurrency, toAmount])
-
-  const handleSwitch = () => {
-    setFromCurrency(toCurrency);
-    setToCurrency(fromCurrency);
-  }
+  }, [onChangeFromAmount]);
 
   const fromConvert = `1 ${fromCurrency} = ${(1 / ratesRef.current[fromCurrency] * ratesRef.current[toCurrency]).toFixed(4)}`
   const toConvert = `1 ${toCurrency} = ${(ratesRef.current[fromCurrency] / ratesRef.current[toCurrency]).toFixed(4)} ${fromCurrency}`

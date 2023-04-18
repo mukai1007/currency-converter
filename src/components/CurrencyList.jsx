@@ -1,14 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { HiArrowUpRight, HiArrowDownRight } from 'react-icons/hi2';
 
 const CurrencyList = ({curList}) => {
 
-    const [selectedValue, setSelectedValue] = useState('');
-    // console.log(selectedValue);
-
-    function handleSelectChange(event) {
-        setSelectedValue(event.target.value);
-      }
   return (
     <div>
         <div className='table'>
